@@ -386,6 +386,47 @@ function DistanceSlider({ value, onChange }) {
   );
 }
 
+// Real concerts found for Apr-Jun 2026 — used for demo mode (no API key needed)
+const DEMO_CONCERTS = [
+  // Vienna
+  { artist: "Worakls Orchestra", city: "Vienna", venue: "Raiffeisen Halle, Gasometer", date: "Apr 2, 2026", genre: "Electronic", artistInfo: "French electronic/neoclassical producer performing a full orchestral live show blending techno with classical instrumentation.", spotifyUrl: "https://open.spotify.com/search/Worakls", youtubeUrl: "https://www.youtube.com/results?search_query=Worakls+Orchestra+live", price: null, ticketUrl: "https://www.ticketmaster.at/discover/wien" },
+  { artist: "Louis Tomlinson", city: "Vienna", venue: "Marx Halle", date: "Apr 6, 2026", genre: "Pop", artistInfo: "Former One Direction member touring his solo pop-rock material on the How Did We Get Here? World Tour.", spotifyUrl: "https://open.spotify.com/search/Louis%20Tomlinson", youtubeUrl: "https://www.youtube.com/results?search_query=Louis+Tomlinson+live", price: null, ticketUrl: "https://www.ticketmaster.at/discover/wien" },
+  { artist: "GoGo Penguin", city: "Vienna", venue: "Vienna", date: "Apr 2026", genre: "Jazz", artistInfo: "UK jazz/electronic trio known for mesmerizing piano-driven instrumental compositions.", spotifyUrl: "https://open.spotify.com/search/GoGo%20Penguin", youtubeUrl: "https://www.youtube.com/results?search_query=GoGo+Penguin+live", price: null, ticketUrl: "https://www.songkick.com/metro-areas/26771-austria-vienna" },
+  { artist: "Tinariwen", city: "Vienna", venue: "Arena Wien", date: "Apr 25, 2026", genre: "Folk", artistInfo: "Grammy-winning Tuareg desert blues collective from Mali, famed for hypnotic guitar-driven live shows.", spotifyUrl: "https://open.spotify.com/search/Tinariwen", youtubeUrl: "https://www.youtube.com/results?search_query=Tinariwen+live", price: null, ticketUrl: "https://www.ticketmaster.at/discover/wien" },
+  { artist: "Christopher Cross", city: "Vienna", venue: "Raiffeisen Halle, Gasometer", date: "Apr 29, 2026", genre: "Rock", artistInfo: "American singer-songwriter behind smooth rock classics like Sailing and Ride Like the Wind.", spotifyUrl: "https://open.spotify.com/search/Christopher%20Cross", youtubeUrl: "https://www.youtube.com/results?search_query=Christopher+Cross+live", price: null, ticketUrl: "https://www.ticketmaster.at/discover/wien" },
+  { artist: "Ne-Yo & Akon", city: "Vienna", venue: "Halle D, Wiener Stadthalle", date: "May 30, 2026", genre: "R&B", artistInfo: "Double-headline R&B and pop show from two chart-topping hitmakers of the 2000s.", spotifyUrl: "https://open.spotify.com/search/Ne-Yo", youtubeUrl: "https://www.youtube.com/results?search_query=Ne-Yo+Akon+live", price: null, ticketUrl: "https://www.songkick.com/metro-areas/26771-austria-vienna" },
+  { artist: "Conan Gray", city: "Vienna", venue: "Halle D, Wiener Stadthalle", date: "Jun 1, 2026", genre: "Pop", artistInfo: "American singer-songwriter and Gen-Z pop star known for emotional bedroom-pop anthems.", spotifyUrl: "https://open.spotify.com/search/Conan%20Gray", youtubeUrl: "https://www.youtube.com/results?search_query=Conan+Gray+live", price: null, ticketUrl: "https://www.songkick.com/metro-areas/26771-austria-vienna" },
+  { artist: "Garbage", city: "Vienna", venue: "Arena Wien", date: "Jun 8, 2026", genre: "Rock", artistInfo: "90s alt-rock icons fronted by Shirley Manson, blending grunge, electronica and pop hooks.", spotifyUrl: "https://open.spotify.com/search/Garbage", youtubeUrl: "https://www.youtube.com/results?search_query=Garbage+band+live", price: null, ticketUrl: "https://www.songkick.com/metro-areas/26771-austria-vienna" },
+  { artist: "Tricky", city: "Vienna", venue: "WUK", date: "Jun 8, 2026", genre: "Electronic", artistInfo: "Bristol trip-hop pioneer, a key figure of the 90s Massive Attack scene with a dark atmospheric sound.", spotifyUrl: "https://open.spotify.com/search/Tricky", youtubeUrl: "https://www.youtube.com/results?search_query=Tricky+live", price: null, ticketUrl: "https://www.songkick.com/metro-areas/26771-austria-vienna" },
+  { artist: "Dermot Kennedy", city: "Vienna", venue: "Raiffeisen Halle, Gasometer", date: "Jun 8, 2026", genre: "Folk", artistInfo: "Irish folk-pop singer with a powerful raspy voice, known for anthemic emotional ballads.", spotifyUrl: "https://open.spotify.com/search/Dermot%20Kennedy", youtubeUrl: "https://www.youtube.com/results?search_query=Dermot+Kennedy+live", price: null, ticketUrl: "https://www.songkick.com/metro-areas/26771-austria-vienna" },
+
+  // Bratislava
+  { artist: "Alvaro Soler", city: "Bratislava", venue: "Aegon Arena", date: "May 6, 2026", genre: "Pop", artistInfo: "Spanish-German pop singer known for sunny multilingual hits like Sofia and El Mismo Sol.", spotifyUrl: "https://open.spotify.com/search/Alvaro%20Soler", youtubeUrl: "https://www.youtube.com/results?search_query=Alvaro+Soler+live", price: null, ticketUrl: "https://www.shazam.com/events/bratislava-slovakia" },
+  { artist: "Iron Maiden + Anthrax", city: "Bratislava", venue: "Tehelné Pole Stadium", date: "May 30, 2026", genre: "Metal", artistInfo: "Legendary British heavy metal band Iron Maiden with thrash icons Anthrax, an epic outdoor stadium show.", spotifyUrl: "https://open.spotify.com/search/Iron%20Maiden", youtubeUrl: "https://www.youtube.com/results?search_query=Iron+Maiden+live", price: null, ticketUrl: "https://www.songkick.com/metro-areas/32262-slovakia-bratislava" },
+  { artist: "Zucchero", city: "Bratislava", venue: "Ondrej Nepela Arena", date: "Jun 12, 2026", genre: "Rock", artistInfo: "Italian blues-rock legend with a gravelly voice, one of Europe's best-selling live artists.", spotifyUrl: "https://open.spotify.com/search/Zucchero", youtubeUrl: "https://www.youtube.com/results?search_query=Zucchero+live", price: null, ticketUrl: "https://www.shazam.com/events/bratislava-slovakia" },
+  { artist: "Sting", city: "Bratislava", venue: "Ondrej Nepela Arena", date: "Jun 20, 2026", genre: "Rock", artistInfo: "Former The Police frontman performing his STING 3.0 tour in a stripped-back three-piece rock format.", spotifyUrl: "https://open.spotify.com/search/Sting", youtubeUrl: "https://www.youtube.com/results?search_query=Sting+live", price: null, ticketUrl: "https://www.shazam.com/events/bratislava-slovakia" },
+  { artist: "Scorpions", city: "Bratislava", venue: "Tipos Aréna", date: "Jun 30, 2026", genre: "Rock", artistInfo: "German hard rock legends behind Wind of Change and Rock You Like a Hurricane.", spotifyUrl: "https://open.spotify.com/search/Scorpions", youtubeUrl: "https://www.youtube.com/results?search_query=Scorpions+live", price: null, ticketUrl: "https://www.songkick.com/metro-areas/32262-slovakia-bratislava" },
+
+  // Budapest
+  { artist: "Pentatonix", city: "Budapest", venue: "MVM Dome", date: "Apr 7, 2026", genre: "Pop", artistInfo: "Grammy-winning American a cappella group redefining vocal pop with inventive arrangements.", spotifyUrl: "https://open.spotify.com/search/Pentatonix", youtubeUrl: "https://www.youtube.com/results?search_query=Pentatonix+live", price: null, ticketUrl: "https://www.bandsintown.com/c/budapest-hungary" },
+  { artist: "5 Seconds of Summer", city: "Budapest", venue: "MVM Dome", date: "Apr 24, 2026", genre: "Rock", artistInfo: "Australian pop-rock band touring fresh material from their upcoming album Everyone's a Star!", spotifyUrl: "https://open.spotify.com/search/5%20Seconds%20of%20Summer", youtubeUrl: "https://www.youtube.com/results?search_query=5+Seconds+of+Summer+live", price: null, ticketUrl: "https://www.bandsintown.com/c/budapest-hungary" },
+  { artist: "Eric Clapton", city: "Budapest", venue: "MVM Dome", date: "May 2, 2026", genre: "Rock", artistInfo: "Multiple Grammy-winning guitar legend nicknamed Slowhand, his first Budapest show in 20 years.", spotifyUrl: "https://open.spotify.com/search/Eric%20Clapton", youtubeUrl: "https://www.youtube.com/results?search_query=Eric+Clapton+live", price: null, ticketUrl: "https://welovebudapest.com/en/toplist/budapest-concerts-2026/" },
+  { artist: "Tori Amos", city: "Budapest", venue: "Erkel Theatre", date: "May 3, 2026", genre: "Rock", artistInfo: "American singer-songwriter and pianist known for confessional art-rock and a distinctive voice.", spotifyUrl: "https://open.spotify.com/search/Tori%20Amos", youtubeUrl: "https://www.youtube.com/results?search_query=Tori+Amos+live", price: null, ticketUrl: "https://www.songkick.com/metro-areas/29047-hungary-budapest" },
+  { artist: "Snarky Puppy & Söndörgő", city: "Budapest", venue: "Müpa Budapest", date: "May 5, 2026", genre: "Jazz", artistInfo: "Grammy-winning American instrumental fusion collective meeting Hungarian folk band Söndörgő.", spotifyUrl: "https://open.spotify.com/search/Snarky%20Puppy", youtubeUrl: "https://www.youtube.com/results?search_query=Snarky+Puppy+live", price: null, ticketUrl: "https://www.songkick.com/metro-areas/29047-hungary-budapest" },
+  { artist: "Hang Massive", city: "Budapest", venue: "Akvárium Klub", date: "May 2, 2026", genre: "Folk", artistInfo: "Handpan duo creating mesmerizing, meditative ambient soundscapes.", spotifyUrl: "https://open.spotify.com/search/Hang%20Massive", youtubeUrl: "https://www.youtube.com/results?search_query=Hang+Massive+live", price: null, ticketUrl: "https://www.songkick.com/metro-areas/29047-hungary-budapest" },
+  { artist: "Metallica", city: "Budapest", venue: "Puskás Aréna", date: "Jun 11, 2026", genre: "Metal", artistInfo: "The biggest metal band in the world, M72 No Repeat Weekend with two completely different setlists.", spotifyUrl: "https://open.spotify.com/search/Metallica", youtubeUrl: "https://www.youtube.com/results?search_query=Metallica+live", price: null, ticketUrl: "https://welovebudapest.com/en/toplist/budapest-concerts-2026/" },
+  { artist: "Mac DeMarco", city: "Budapest", venue: "Budapest Park", date: "Jun 23, 2026", genre: "Indie", artistInfo: "Laid-back Canadian indie singer-songwriter known for jangly slacker-rock and a relaxed live presence.", spotifyUrl: "https://open.spotify.com/search/Mac%20DeMarco", youtubeUrl: "https://www.youtube.com/results?search_query=Mac+DeMarco+live", price: null, ticketUrl: "https://welovebudapest.com/en/toplist/budapest-concerts-2026/" },
+
+  // Prague
+  { artist: "Iron Maiden", city: "Prague", venue: "Letňany", date: "Jun 2026", genre: "Metal", artistInfo: "Legendary British heavy metal band on their Run For Your Lives world tour.", spotifyUrl: "https://open.spotify.com/search/Iron%20Maiden", youtubeUrl: "https://www.youtube.com/results?search_query=Iron+Maiden+live", price: null, ticketUrl: "https://www.songkick.com" },
+
+  // Munich
+  { artist: "Volbeat", city: "Munich", venue: "Munich", date: "Jun 2026", genre: "Metal", artistInfo: "Danish rock/metal band blending heavy metal with rockabilly and Elvis-style vocals.", spotifyUrl: "https://open.spotify.com/search/Volbeat", youtubeUrl: "https://www.youtube.com/results?search_query=Volbeat+live", price: null, ticketUrl: "https://www.songkick.com" },
+
+  // Berlin
+  { artist: "Empire of the Sun", city: "Berlin", venue: "Berlin", date: "Jun 2026", genre: "Electronic", artistInfo: "Australian electronic/synth-pop duo famed for theatrical costumes and the hit Walking on a Dream.", spotifyUrl: "https://open.spotify.com/search/Empire%20of%20the%20Sun", youtubeUrl: "https://www.youtube.com/results?search_query=Empire+of+the+Sun+live", price: null, ticketUrl: "https://www.songkick.com" },
+];
+
 export default function ConcertRadar() {
   const [concerts, setConcerts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -394,6 +435,7 @@ export default function ConcertRadar() {
   const [error, setError] = useState(null);
   const [debugInfo, setDebugInfo] = useState("");
   const [searched, setSearched] = useState(false);
+  const [demoMode, setDemoMode] = useState(false);
 
   // API Key (stored in localStorage for convenience)
   const [apiKey, setApiKey] = useState(() => {
@@ -403,6 +445,24 @@ export default function ConcertRadar() {
     setApiKey(key);
     try { localStorage.setItem('concert_radar_api_key', key); } catch {}
   };
+
+  const loadDemoData = () => {
+    setError(null);
+    setDebugInfo("");
+    setConcerts(DEMO_CONCERTS);
+    setCompletedCities([...new Set(DEMO_CONCERTS.map(c => c.city))]);
+    setLoadingCities([]);
+    setLoading(false);
+    setSearched(true);
+    setDemoMode(true);
+    setShowFavoritesOnly(false);
+  };
+
+  // Auto-load demo data on first visit so the app is never empty
+  useEffect(() => {
+    loadDemoData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Favorites
   const [favorites, setFavorites] = useState(new Set());
@@ -489,6 +549,7 @@ export default function ConcertRadar() {
     setDebugInfo("");
     setConcerts([]);
     setSearched(true);
+    setDemoMode(false);
     setCompletedCities([]);
     setLoadingCities([]);
     setFavorites(new Set());
@@ -733,18 +794,18 @@ Rules:
               display: "block", fontSize: 11, color: "rgba(255,255,255,0.35)",
               textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8, fontWeight: 600,
             }}>
-              Anthropic API Key
+              Anthropic API Key <span style={{ color: "rgba(255,255,255,0.25)", textTransform: "none", letterSpacing: 0 }}>— optional, for live search</span>
             </label>
             <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
               <input
                 type={apiKey && apiKey.length > 8 ? "password" : "text"}
-                placeholder="sk-ant-..."
+                placeholder="sk-ant-...  (leave empty to browse demo data)"
                 value={apiKey}
                 onChange={e => saveApiKey(e.target.value)}
                 style={{
                   flex: 1, padding: "10px 14px",
                   background: "rgba(255,255,255,0.05)",
-                  border: `1px solid ${apiKey ? "rgba(34,197,94,0.3)" : "rgba(255,138,76,0.3)"}`,
+                  border: `1px solid ${apiKey ? "rgba(34,197,94,0.3)" : "rgba(255,255,255,0.1)"}`,
                   borderRadius: 10, color: "#fff",
                   fontSize: 13, fontFamily: "'DM Mono', monospace",
                   outline: "none",
@@ -756,12 +817,12 @@ Rules:
                 fontSize: 11, color: "rgba(255,255,255,0.3)",
                 marginBottom: 20, marginTop: -12, lineHeight: 1.5,
               }}>
-                Get your key at{" "}
+                Browsing real sample data below — no key needed. To run a fresh live search, add a key from{" "}
                 <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer"
                   style={{ color: "#ff8a4c", textDecoration: "none" }}>
                   console.anthropic.com
                 </a>
-                . Key is stored locally in your browser only.
+                . Stored locally in your browser only.
               </div>
             )}
 
@@ -969,15 +1030,27 @@ Rules:
                   <span style={{
                     fontFamily: "'Playfair Display', Georgia, serif",
                     fontSize: 20, fontWeight: 700,
+                    display: "flex", alignItems: "center", gap: 10,
                   }}>
                     {showFavoritesOnly ? `${filteredConcerts.length} Saved` : `${filteredConcerts.length} Concert${filteredConcerts.length !== 1 ? "s" : ""}`}
+                    {demoMode && (
+                      <span style={{
+                        fontSize: 10, fontFamily: "'DM Sans', sans-serif", fontWeight: 600,
+                        color: "#3b82f6", background: "rgba(59,130,246,0.12)",
+                        border: "1px solid rgba(59,130,246,0.25)",
+                        padding: "3px 10px", borderRadius: 20, letterSpacing: 0.5,
+                        textTransform: "uppercase",
+                      }}>
+                        Demo Data
+                      </span>
+                    )}
                   </span>
                   {!loading && (
                     <span style={{
                       fontSize: 11, color: "rgba(255,255,255,0.25)",
                       fontFamily: "'DM Mono', monospace",
                     }}>
-                      {completedCities.length} cities scanned
+                      {demoMode ? "sample concerts" : `${completedCities.length} cities scanned`}
                     </span>
                   )}
                 </div>
